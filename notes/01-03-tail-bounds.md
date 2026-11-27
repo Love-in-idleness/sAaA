@@ -30,3 +30,22 @@ $\ell_\alpha$ 递增趋于下极限，$u_\alpha$ 递减趋于上极限。
 反过来，若两个端点网都趋于 $L$，由 $\ell_\alpha\le x_\alpha\le u_\alpha$，夹逼即得 $x_\alpha\to L$。
 
 **Remark.** 夹逼时用到了指标集的有向性。下端点高于 $L-\varepsilon$ 与上端点低于 $L+\varepsilon$ 可以从不同指标开始成立。取这两个指标的共同上界，两项估计就在同一条尾网上同时成立。
+
+### Def　从尾集到滤子
+
+网的尾滤子是 $\mathcal F_x=\{A\subseteq\mathbb R:\exists\alpha,\ T_\alpha\subseteq A\}$。它记录哪些条件最终成立。对 $\mathbb R$ 上任意真滤子 $\mathcal F$，在扩充实数系中定义
+
+$$
+\liminf\mathcal F=\sup_{A\in\mathcal F}\inf A,\qquad
+\limsup\mathcal F=\inf_{A\in\mathcal F}\sup A.
+$$
+
+**Prop.** 两式都可以只在任一滤子基上取确界。
+
+**Pf.** 每个滤子成员 $A$ 都包含某个基成员 $B$，故 $\inf A\le\inf B$ 且 $\sup B\le\sup A$。又因基成员本身属于滤子，两式均保持原值。对尾滤子取尾集为基，就还原网的公式。
+
+**e.g.** 对本节的振荡数列，其尾滤子用尾集作基，给出下极限 $-1$ 和上极限 $1$。只保留偶数项得到的子列，其尾滤子更细，上下极限都等于 $1$。
+
+**Th.** 对有限实数 $L$，$\mathcal F\to L$ 当且仅当 $\liminf\mathcal F=\limsup\mathcal F=L$。
+
+**Pf.** 若两者都等于 $L$，任取 $a<L<b$，可找 $A,B\in\mathcal F$ 满足 $\inf A>a$、$\sup B<b$。则 $A\cap B\in\mathcal F$ 且 $A\cap B\subseteq(a,b)$，故 $(a,b)\in\mathcal F$。反向若 $\mathcal F\to L$，则每个 $L$ 的邻域属于滤子，每个滤子成员都与每个这样的邻域相交。因此对所有 $A\in\mathcal F$ 有 $\inf A\le L\le\sup A$。再取滤子成员 $(L-\varepsilon,L+\varepsilon)$ 并令 $\varepsilon\downarrow0$，即得两式均等于 $L$。
