@@ -1,14 +1,32 @@
 # 第 1 章第 3 讲（下）　尾集与上下极限
 
-取 $x_n=(-1)^n+1/n$（$n\ge1$）。偶数项从上方趋于 $1$，奇数项从上方趋于 $-1$。删去任意有限段，尾部仍保留这两种行为。
+### e.g.　从一个振荡数列开始
 
-令 $T_n=\{x_k:k\ge n\}$。每个尾集的下确界都是 $-1$，尽管没有一项等于 $-1$。上确界则等于尾部第一个偶数项，即 $1+1/(2\lceil n/2\rceil)$。这给出下极限 $-1$ 和上极限 $1$。
+取 $x_n=(-1)^n+1/n$，$n\ge1$。从第 $n$ 项起，所有项都落在哪个最小闭区间里？记 $T_n=\{x_k:k\ge n\}$，这个区间就是 $[\inf T_n,\sup T_n]$。
 
-一般地，实数网 $(x_\alpha)$ 的尾集为 $T_\alpha=\{x_\beta:\beta\ge\alpha\}$。随着指标增大，尾集缩小，故尾部下确界递增，上确界递减。在扩充实数系中，上一节的单调网定理及其对偶给出
+奇数项从上方逼近 $-1$，所以每个尾集的下确界都是 $-1$。偶数项递减且大于所有奇数项，所以尾集的上确界是其中第一个偶数项。随着 $n$ 增大，区间的左端点恒为 $-1$，右端点趋于 $1$。
+
+### Def　尾集、下极限与上极限
+
+设 $(x_\alpha)_{\alpha\in I}$ 是实数网。记 $T_\alpha=\{x_\beta:\beta\ge\alpha\}$ 为尾集，记 $\ell_\alpha=\inf T_\alpha$，$u_\alpha=\sup T_\alpha$。所有确界均在扩充实数系中取。定义
 
 $$
-\liminf_\alpha x_\alpha=\sup_\alpha\inf T_\alpha,\qquad
-\limsup_\alpha x_\alpha=\inf_\alpha\sup T_\alpha.
+\liminf_\alpha x_\alpha=\sup_\alpha\ell_\alpha,\qquad
+\limsup_\alpha x_\alpha=\inf_\alpha u_\alpha.
 $$
 
-若二者同为有限值 $L$，给定 $a<L<b$，可取一个尾集使其下确界大于 $a$，再取一个尾集使其上确界小于 $b$。取这两个指标的共同上界，其后的所有项便落入 $(a,b)$，故该网收敛到 $L$。反过来，若网收敛到 $L$，对任意 $\varepsilon>0$，最终每个尾集都落在 $(L-\varepsilon,L+\varepsilon)$ 内，其上下确界因此都趋于 $L$。
+### Prop　尾部的两个端点各自单调收敛
+
+$\ell_\alpha$ 递增趋于下极限，$u_\alpha$ 递减趋于上极限。
+
+**Pf.** 若 $\alpha\le\gamma$，则 $T_\gamma\subseteq T_\alpha$，所以 $\ell_\alpha\le\ell_\gamma\le u_\gamma\le u_\alpha$。分别应用上一节的单调网定理及其对偶即可。
+
+### Th　收敛判据
+
+对 $L\in\mathbb R$，有 $x_\alpha\to L$ 当且仅当 $\liminf_\alpha x_\alpha=\limsup_\alpha x_\alpha=L$。
+
+**Pf.** 若 $x_\alpha\to L$，对每个 $\varepsilon>0$，充分靠后的尾集都含于 $(L-\varepsilon,L+\varepsilon)$。其两个端点因而都落在 $[L-\varepsilon,L+\varepsilon]$ 中，故都趋于 $L$。
+
+反过来，若两个端点网都趋于 $L$，由 $\ell_\alpha\le x_\alpha\le u_\alpha$，夹逼即得 $x_\alpha\to L$。
+
+**Remark.** 夹逼时用到了指标集的有向性。下端点高于 $L-\varepsilon$ 与上端点低于 $L+\varepsilon$ 可以从不同指标开始成立。取这两个指标的共同上界，两项估计就在同一条尾网上同时成立。
